@@ -1,0 +1,34 @@
+// --------------------
+// preview
+// --------------------
+.preview {
+  @extend %noselect, %antialiased;
+  position: fixed; top: $unit*2; right: -$unit*2; z-index: 90;
+  padding-right: $unit*4; padding-left: $unit;
+  opacity: 0;
+  @include transform(translateX(10%));
+  @include all();
+  &:before {
+    content: '';
+    position: absolute; top: 0; right: 0; bottom: 0; left: 0;
+    @include context-bg('preview-');
+    @include transform(skew(-30deg));
+  }
+}
+.preview-header { @extend %relative, %txt-right; z-index: 1; min-width: $unit*10; max-width: $unit*18; padding: $unit/2 $unit; }
+.preview-title { @extend %default, %regular; color: $white; }
+.preview-context { @extend %small, %italic; position: absolute; bottom: 100%; right: $unit; white-space: nowrap; color: $dark; }
+.preview-date { @extend %small, %uppercase, %xbold; color: $white; }
+.preview-icon {
+  @extend %txt-center, %large;
+  position: absolute; top: 0; bottom: 0; right: -$unit*2;
+  width: $unit*2; padding: $unit/2;
+  background: rgba($black, .2); color: $white;
+}
+
+
+
+// --------------------
+// show
+// --------------------
+.preview-show { opacity: 1; @include transform(none); }

@@ -1,0 +1,126 @@
+// --------------------
+// commons
+// --------------------
+.page-exit {
+  @extend %noselect, %antialiased;
+  position: fixed; top: 0; left: 0; z-index: 390; cursor: pointer;
+  width: $unit*4; height: $unit*6;
+  @include transform(translateX(-100%));
+  @include all();
+  &:before {
+    content: ''; @include context-bg('page-');
+    display: block; width: 100%; height: 100%;
+    @include transform(skewX(-30deg));
+    @include origin(left top);
+  }
+  &:after {
+    @extend %larger, %xbold;
+    content: '×'; color: $white;
+    position: absolute; top: $unit/2; left: $unit*3/2; z-index: 10;
+  }
+}
+
+@-webkit-keyframes slowScale { from { -webkit-transform: translate(2%, 1%) scale(1.1); } to { -webkit-transform: translate(-2%, -1%) scale(1.3); } }
+@keyframes slowScale { from { transform: translate(2%, 1%) scale(1.1); } to { transform: translate(-2%, -1%) scale(1.3); } }
+
+
+
+// --------------------
+// content
+// --------------------
+.page {
+  position: fixed; top: 0; left: 0; overflow: hidden; z-index: -10;
+  width: 100%; min-width: 1000px; height: 100%;
+}
+.page-wrap {
+  @extend %relative;
+  width: 100%; min-width: 1000px; height: 100%;
+  @include transform(translateY(100%));
+  @include all();
+}
+
+.page-content {
+  position: absolute; top: 0; left: 0;
+  overflow: auto; -webkit-overflow-scrolling: touch;
+  width: 100%; height: 100%;
+  background: $white;
+  &:after { content: ''; position: fixed; right: 0; bottom: 0; left: 0; height: $unit*3; background: linear-gradient(rgba($white, 0), $white); }
+}
+.page-content-wrap { width: 50%; margin: auto; padding-top: $unit*8; }
+.page-header { padding: $unit*3 $unit*4; background: $light; }
+.page-full {
+  .page-content { width: 50%; }
+  .page-content-wrap { width: 100%; padding: 0; }
+}
+
+.page-video { @extend %relative; padding-top: 56.25%; }
+.page-video-frame { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
+
+.page-title { @extend .current-title; }
+.page-title-style { @extend .current-title-style; &:after { background: $dark; }}
+.page-date { @extend .current-date; margin-bottom: 0; color: $dark; }
+.page-excerpt {
+  @extend %larger, %bold; margin-top: $unit/2;
+  line-height: $unit*1.4;
+  color: $grey;
+}
+
+.page-app { @extend %app; padding: $unit $unit*4; }
+.page-app-img { @extend %app-img; }
+.page-app-text { @extend %app-text; }
+
+.page-text {
+  @extend %large;
+  padding: $unit*3 $unit*4;
+  line-height: $unit*1.24; color: $dark;
+  p, ul, ol, blockquote { &:not(:last-child) { margin-bottom: $unit*.62; }}
+  blockquote {
+    @extend %relative;
+    &:before {
+      @extend %xbold;
+      content: '“';
+      position: absolute; top: 0; right: 100%; padding-right: $unit/2;
+      font-family: serif; font-size: $base*3; color: $grey;
+    }
+    & > *:last-child:after { @extend %xbold; content: '”'; font-family: serif; }
+  }
+}
+
+.page-cover {
+  position: absolute; top: 0; right: 0; overflow: hidden;
+  width: 50%; height: 100%;
+  background: $dark;
+  @extend %txt-center; font-size: 0;
+  @include transform(translateX(100%));
+}
+.page-cover-img {
+  position: absolute; top: 0; left: 0;
+  width: 100%; height: 100%;
+  background-repeat: no-repeat; background-size: cover;
+}
+
+.page-context {
+  @extend .preview, %default;
+  z-index: 10; white-space: nowrap;
+  padding: $unit/2 $unit*3 $unit/2 $unit;
+  color: $white; opacity: 1;
+  @include transform(translateX(100%));
+  &:before { z-index: -1; @include context-bg('page-'); }
+}
+
+
+
+// --------------------
+// page open
+// --------------------
+#page-token:checked ~ #page {
+  .page-exit {
+    @include transform(translateX(-$unit)); @include all(.5s);
+    &:hover { @include transform(translateX(-$unit/2)); @include all(); }
+  }
+  .page { z-index: 300; }
+  .page-wrap { @include transform(none); @include all(.2s); }
+  .page-cover { @include transform(none); @include all(.7s); }
+  .page-cover-img { @include animate(slowScale 60s forwards); }
+  .page-context { opacity: 1; @include transform(none); @include all(.5s); }
+}

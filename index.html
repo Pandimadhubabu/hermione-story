@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <title>L'Hermione, le Voyage vers la Liberté</title>
+  <meta name="description" content="Une expérience web documentaire inédite sur les relations franco-américaines.">
+  <meta name="robots" content="index, follow">
+  <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { font-size: 62.5%; }
+    body, .warning { background: #FFF url('assets/images/background.jpg') no-repeat fixed right bottom; background-size: cover; }
+    .preload, .warning { position: fixed; top: 0; left: 0; display: table; width: 100%; height: 100%; z-index: 1000; font: 1.4rem 'Helvetica Neue', Helvetica, Arial, sans-serif; line-height: 2rem; }
+    .preload-wrap, .warning-wrap { display: table-cell; text-align: center; vertical-align: middle; }
+    .preload-header { display: inline-block; width: 100%; margin-bottom: 4rem; }
+    .preload-title { margin-bottom: 1rem; font-size: 1.875em; font-weight: 900; color: #282D39; }
+    .preload-subtitle { display: inline-block; padding: 0 .667rem; font-size: 1em; font-style: italic; background: #000; color: #FFF; }
+    .preload-subtitle, .preload-progress, .warning-text { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+    .preload-progress { position: relative; display: inline-block; overflow: hidden; width: 30rem; height: 3rem; background: #5A6470; line-height: 3rem; }
+    .preload-progress:after { content: attr(data-value); position: absolute; right: 1rem; top: 0; font-weight: bold; font-size: .875em; color: #FFF; }
+    .preload-progress-bar { box-sizing: content-box; position: absolute; top: 0; bottom: 0; left: -2rem; padding: 0 1rem; background: #282D39; -webkit-transform: skew(-30deg); transform: skew(-30deg); -webkit-transform-origin: left bottom; transform-origin: left bottom; }
+    .preload-progress-label, .preload-progress-start { position: absolute; top: 0; left: 1rem; color: #FFF; font-size: .875em; -webkit-transition: all .5s; transition: all .5s; }
+    .preload-progress-start { opacity: 0; z-index: -10; cursor: pointer; left: 0; width: 100%; background: #528ccc; font-weight: bold; text-transform: uppercase; }
+    .preload-progress-start:hover { background: #282D39; }
+    .preload-start:after { content: '8/8'; }
+    .preload-start .preload-progress-label { opacity: 0; }
+    .preload-start .preload-progress-start { opacity: 1; z-index: 10; }
+    .warning { display: none; z-index: 5000; }
+    .warning-wrap { padding: 1.5em; }
+    .warning-text { display: inline-block; max-width: 400px; padding: 1.5rem; background: #000; color: #FFF; }
+    .warning-text a { color: #528ccc; }
+    @media (max-width: 1023px), (max-aspect-ratio: 4/3), (min-aspect-ratio: 3/1) { .warning { display: table; } }
+    .ie .warning, .ff .warning, .opera .warning { display: table; }
+    .restart { opacity: 0; z-index: -10; }
+  </style>
+</head>
+<body>
+  <main id="preload" class="preload">
+    <section class="preload-wrap">
+      <header class="preload-header">
+        <h1 class="preload-title">L'Hermione, le Voyage vers la Liberté</h1>
+        <h2 class="preload-subtitle">Une expérience web documentaire inédite sur les relations franco-américaines.</h2>
+      </header>
+      <div class="preload-progress" data-value="0">
+        <div class="preload-progress-bar" style="width:0%"></div>
+        <div class="preload-progress-label">chargement…</div>
+        <div class="preload-progress-start" title="touche ENTRÉE du clavier">lever l'ancre</div>
+      </div>
+    </section>
+  </main>
+  <section id="warning" class="warning">
+    <article class="warning-wrap">
+      <p class="warning-text"><i>L'Hermione, le Voyage vers la Liberté</i> est une expérience web documentaire inédite sur la frégate de Lafayette.<br>Ce site est l'œuvre d'une expérimentation technologique, consultable uniquement sur <b>ordinateur ou tablette</b>, sur les versions récentes des navigateurs <b>Google Chrome et Safari</b> et en <b>format paysage</b>.
+      <br><a href="https://www.google.com/chrome" target="_blank">Télécharger Google Chrome</a></p>
+    </article>
+  </section>
+  <a id="restart" class="restart" href="">Recommencer l'aventure</a>
+  <script src="assets/lib/head.min.js"></script>
+  <script src="app/app.js"></script>
+  <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-43091425-4', 'auto'); ga('send', 'pageview');
+  </script>
+</body>
+</html>

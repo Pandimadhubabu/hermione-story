@@ -1,0 +1,103 @@
+// --------------------
+// Variables
+// --------------------
+$base: 1.4rem;
+$ratio: 1.4;
+$unit: $ratio*$base;
+
+$white: #FFF;
+$light: #D5D9DC;
+$grey: #5A6470;
+$dark: #32394B;
+$darker: #282D39;
+$black: #000;
+
+
+
+// --------------------
+// Common
+// --------------------
+@mixin transition($p) { -webkit-transition: $p; transition: $p; }
+@mixin transform($p) { -webkit-transform: $p; transform: $p; }
+@mixin origin($p) { -webkit-transform-origin: $p; transform-origin: $p; }
+@mixin animate($p) { -webkit-animation: $p; animation: $p; }
+@mixin all($d:0s) { @include transition(all .5s cubic-bezier(.3,.5,.2,1) $d); }
+
+@-webkit-keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+
+@mixin context-bg($prefix:'',$self:false) {
+  @if $self {
+    &.#{$prefix}tutoriel { background: $tutoriel; }
+    &.#{$prefix}aucun { background: $aucun; }
+    &.#{$prefix}ideaux { background: $ideaux; }
+    &.#{$prefix}hermione { background: $hermione; }
+    &.#{$prefix}actuel { background: $actuel; }
+    &.#{$prefix}guerre { background: $guerre; }
+    &.#{$prefix}relations { background: $relations; }
+    &.#{$prefix}fin { background: $fin; }
+  } @else {
+    .#{$prefix}tutoriel & { background: $tutoriel; }
+    .#{$prefix}aucun & { background: $aucun; }
+    .#{$prefix}ideaux & { background: $ideaux; }
+    .#{$prefix}hermione & { background: $hermione; }
+    .#{$prefix}actuel & { background: $actuel; }
+    .#{$prefix}guerre & { background: $guerre; }
+    .#{$prefix}relations & { background: $relations; }
+    .#{$prefix}fin & { background: $fin; }
+  }
+}
+@mixin context-color($prefix:'',$self:false) {
+  @if $self {
+    &.#{$prefix}tutoriel { color: $tutoriel; }
+    &.#{$prefix}aucun { color: $aucun; }
+    &.#{$prefix}ideaux { color: $ideaux; }
+    &.#{$prefix}hermione { color: $hermione; }
+    &.#{$prefix}actuel { color: $actuel; }
+    &.#{$prefix}guerre { color: $guerre; }
+    &.#{$prefix}relations { color: $relations; }
+    &.#{$prefix}fin { color: $fin; }
+  } @else {
+    .#{$prefix}tutoriel & { color: $tutoriel; }
+    .#{$prefix}aucun & { color: $aucun; }
+    .#{$prefix}ideaux & { color: $ideaux; }
+    .#{$prefix}hermione & { color: $hermione; }
+    .#{$prefix}actuel & { color: $actuel; }
+    .#{$prefix}guerre & { color: $guerre; }
+    .#{$prefix}relations & { color: $relations; }
+    .#{$prefix}fin & { color: $fin; }
+  }
+}
+
+
+%noselect { -webkit-touch-callout: none; -webkit-user-select: none; -moz-user-select: -moz-none; -ms-user-select: none; user-select: none; }
+%antialiased { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+
+%regular { font-weight: 400; }
+%bold { font-weight: 700; }
+%xbold { font-weight: 900; }
+
+%smaller { font-size: $base*.675; }
+%small { font-size: $base*.825; }
+%default { font-size: $base; }
+%large { font-size: $base*1.125; }
+%larger { font-size: $base*1.5; }
+%xlarge { font-size: $base*1.875; }
+
+%italic { font-style: italic; }
+%uppercase { text-transform: uppercase; }
+
+%txt-center { text-align: center; }
+%txt-left { text-align: left; }
+%txt-right { text-align: right; }
+
+%relative { position: relative; }
+%clearfix:after { content: ''; display: table; clear: both; }
+
+%app { @extend %clearfix, %antialiased; display: block; padding: $unit; background: $darker; text-decoration: none; }
+%app-img { display: block; float: left; width: $unit*3; height: auto; }
+%app-text {
+  margin-left: $unit*4; color: $light;
+  small { @extend %smaller, %bold, %uppercase; &:after { content: ' →'; }}
+}

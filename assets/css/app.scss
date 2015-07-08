@@ -1,0 +1,65 @@
+// --------------------
+// Base
+// --------------------
+@import '_colors';
+@import '_fonts';
+@import '_icons';
+@import '_base';
+
+
+
+// --------------------
+// Global
+// --------------------
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { font-size: 62.5%; }
+body {
+  background: $white url('../images/background.jpg') no-repeat fixed right bottom; background-size: cover;
+  font: $base 'Geometria', 'Helvetica Neue', Helvetica, Arial, sans-serif; line-height: $unit;
+}
+
+.restart {
+  @extend %txt-center, %uppercase, %bold, %noselect;
+  z-index: -10; opacity: 0;
+  position: fixed; top: calc(50% - #{$unit*1.5}); left: calc(50% - #{$unit*10});
+  width: $unit*20; padding: 0 $unit*1.5;
+  border: 2px solid $black; background: $white;
+  line-height: $unit*3; color: $black; text-decoration: none;
+  @include all();
+  &:hover { background: $black; color: $white; }
+}
+.restart-show { opacity: 1; z-index: 50; }
+
+
+
+// --------------------
+// Imports
+// --------------------
+#preload { @include all(); }
+#loaded > #preload { opacity: 0; z-index: -100; }
+#grid, #controls, #page, #current, #menu { @include all(.5s); opacity: 0; #loaded > & { opacity: 1; } }
+#page-token, #menu-token { display: none; }
+#page-token:checked ~ #grid,
+#page-token:checked + #menu-token:not(:checked) ~ #menu,
+#page-token:checked ~ #restart,
+#menu-token:checked ~ #grid,
+#menu-token:checked ~ #current,
+#menu-token:checked ~ #restart { opacity: 0!important; @include all(); }
+
+@import '_grid';
+@import '_controls';
+@import '_preview';
+@import '_current';
+@import '_menu';
+@import '_page';
+
+
+
+// --------------------
+// Responsive
+// --------------------
+@media (min-width: 1440px) { html { font-size: 70%; } }
+@media (min-width: 1680px) { html { font-size: 80%; } }
+@media (min-width: 1920px) { html { font-size: 90%; } }
+@media (min-width: 2240px) { html { font-size: 100%; } }
+@media (min-width: 2560px) { html { font-size: 110%; } }

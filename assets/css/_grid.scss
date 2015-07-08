@@ -1,0 +1,44 @@
+// --------------------
+// Tiles grid
+// rotate3d: http://tympanus.net/codrops/css_reference/rotate3d/
+// transform: http://www.createcss3.com
+// --------------------
+.grid-wrap {
+  position: fixed; right: 0; bottom: 0;
+  width: 1200px; height: 400px;
+  overflow: hidden;
+  -webkit-perspective: 500px; perspective: 500px;
+  .ff & { overflow: visible; }
+}
+.grid-box {
+  width: 100%; height: 100%;
+  @include transform(translateX(65%) translateY(-10%) rotateX(60deg) rotateY(-5deg) rotateZ(-65deg));
+  @include origin(left bottom);
+}
+.grid { @extend %noselect; }
+
+
+%tile {
+  fill-opacity: .5; stroke-opacity: 1;
+  fill: $grey; stroke: $grey;
+  &.tile-tutoriel { fill: $tutoriel; stroke: $tutoriel; }
+  &.tile-aucun { fill: $aucun; stroke: $aucun; }
+  &.tile-ideaux { fill: $ideaux; stroke: $ideaux; }
+  &.tile-hermione { fill: $hermione; stroke: $hermione; }
+  &.tile-actuel { fill: $actuel; stroke: $actuel; }
+  &.tile-guerre { fill: $guerre; stroke: $guerre; }
+  &.tile-relations { fill: $relations; stroke: $relations; }
+  &.tile-fin { fill: $fin; stroke: $fin; }
+  &:hover { fill-opacity: 1; stroke-opacity: 1; }
+  @include animate(fadeIn .3s backwards);
+  -webkit-transition: fill-opacity .3s, stroke-opacity .3s; transition: fill-opacity .3s, stroke-opacity .3s;
+}
+
+.tile-disabled { display: none; }
+.tile { @extend %tile; stroke-width: 0; }
+.tile-item { @extend %tile; stroke-width: 0; cursor: pointer; }
+.tile-checkpoint { @extend %tile; stroke-width: 6; cursor: pointer; }
+
+.tile-through { fill-opacity: 0; stroke-opacity: .5; stroke-width: 6; cursor: auto; }
+.tile-through.tile-checkpoint { stroke-opacity: 1; }
+.tile-current { fill: $dark!important; fill-opacity: 1!important; stroke-width: 0!important; cursor: auto; }

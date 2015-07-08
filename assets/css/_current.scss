@@ -1,0 +1,60 @@
+// --------------------
+// preview current
+// --------------------
+.current-bg {
+  @include context-bg;
+  position: fixed; top: 0; left: 0; z-index: 100;
+  width: 200%; height: 100%;
+  @include transform(translateX(calc(-100% - #{$unit*2})) skewX(-30deg));
+  @include origin(left bottom);
+  @include all(.2s);
+  #current:hover & { @include transform(translateX(-100%) skewX(-30deg)); }
+}
+
+.current-wrap {
+  @extend %noselect;
+  position: fixed; top: 0; left: 0; z-index: 110;
+  padding: $unit*2 0 0 $unit*2;
+  @include all(.2s);
+}
+.current-title { @extend %relative, %xbold, %xlarge; max-width: $unit*35; line-height: $unit*1.4; color: $black; }
+.current-title-style {
+  margin-bottom: $unit*3/2;
+  &:after { content: ''; position: absolute; bottom: -$unit/2; left: 0; width: $unit*4; height: $unit/4; background: $white; }
+}
+.current-date {
+  @extend %small, %xbold, %uppercase;
+  display: block; margin-bottom: $unit/2;
+  line-height: $unit; color: $white;
+}
+.current-excerpt {
+  @extend %italic, %bold, %antialiased;
+  max-width: $unit*22; margin-bottom: $unit;
+  line-height: $unit; color: $white;
+  & > p {
+    display: inline;
+    padding: $unit/6 $unit/3; background: $black;
+    -webkit-box-decoration-break: clone; box-decoration-break: clone;
+    line-height: $unit*2/3;
+    @include all();
+  }
+}
+.current-btn {
+  @extend %small, %uppercase, %bold;
+  display: inline-block; cursor: pointer;
+  padding: 0 $unit; line-height: $unit*2;
+  background: $white; color: $black;
+  border: 2px solid $black;
+  @include all();
+  &:hover { background: $black; color: $white; }
+}
+
+
+
+// --------------------
+// page open
+// --------------------
+#page-token:checked + #menu-token:not(:checked) ~ #current {
+  .current-bg { background: $white; @include transform(translateX(-50%) skewX(-30deg)); @include all(); }
+  .current { opacity: 0; @include transform(translateY(-100%)); @include all(); }
+}
