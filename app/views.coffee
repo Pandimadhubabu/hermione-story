@@ -122,7 +122,7 @@ Page = (target, token) ->
           </header>
           {{#text}}
           <a href="http://flottillenumerique.com" target="_blank" class="page-app">
-            <img src="assets/images/app.png" width="64" height="64" class="page-app-img">
+            <img src="public/images/app.png" width="64" height="64" class="page-app-img">
             <p class="page-app-text">Plus d'informations à ce sujet sur l'application PC et tablettes <b>L'Hermione, la Traversée des Lumières</b>.
             <br><small>Télécharger sur flottillenumerique.com</small></p>
           </a>
@@ -217,7 +217,7 @@ Menu = (target, token, data = [], callback = false) ->
               <footer class="credits">
                 <div id="skip" class="skip"></div>
                 <a href="http://flottillenumerique.com" target="_blank" class="credits-app">
-                  <img src="assets/images/app.png" width="64" height="64" class="credits-app-img">
+                  <img src="public/images/app.png" width="64" height="64" class="credits-app-img">
                   <p class="credits-app-text">Retrouvez plus de contenus sur notre application ludo-éducative PC et tablettes <b>L'Hermione, la Traversée des Lumières</b>.
                   <br><small>Télécharger sur www.flottillenumerique.com</small></p>
                 </a>
