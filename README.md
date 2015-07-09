@@ -15,6 +15,6 @@ Hosted completely on Github, the database is extracted from a [Google Spreadshee
 We are sorry that we weren't able to make it compatible for Firefox. It is due to a rendering bug which breaks SVG interactions (mouse over, click & drag) when deformed for perspective.
 
 ## Thanks
-Hermione-Story.com works thanks to (only) 3 awesome light-weight libraries: [HeadJS](http://headjs.com), [MustacheJS](https://mustache.github.io) and [HammerJS](http://hammerjs.github.io).
+Hermione-Story.com uses (only) 3 awesome light-weight libraries: [HeadJS](http://headjs.com), [MustacheJS](https://mustache.github.io) and [HammerJS](http://hammerjs.github.io).
 
 We owe a huge thanks to [Amit Patel](http://www.redblobgames.com) for his [hexagonal grid bible](http://www.redblobgames.com/grids/hexagons/).
