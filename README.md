@@ -11,6 +11,9 @@ This website is free to view on PC & tablets, and is completely hosted here on G
 
 *L’Hermione, the Voyage to Liberty* is part of a bigger project, please visit [www.hermionefrigate.com](http://www.hermionefrigate.com) for more information.
 
+## License
+*L’Hermione, the Voyage to Liberty* source is shared under a [Creative Commons BY-NC-ND license](http://creativecommons.org/licenses/by-nc-nd/4.0/). You may not use the material for commercial purposes. You may not distribute a modified version.
+
 ## Technical notes
 Hosted completely on Github, the database is extracted from a [Google Spreadsheet](https://docs.google.com/spreadsheets/d/1P4mghyYzydyaTzcW-iofQu1KSBstk5I-MZKr6hk_0eE/pubhtml).
 
