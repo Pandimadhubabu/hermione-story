@@ -8,3 +8,13 @@ This website is free to view on PC & tablets, and is completely hosted here on G
 [www.hermione-story.com](http://www.hermione-story.com)
 
 *L’Hermione, the Voyage to Liberty website is a technical experiment, only available on tablets & PC through Chrome or Safari.*
+
+## Technical notes
+Hosted completely on Github, the database is extracted from a [Google Spreadsheet](https://docs.google.com/spreadsheets/d/1P4mghyYzydyaTzcW-iofQu1KSBstk5I-MZKr6hk_0eE/pubhtml).
+
+We are sorry that we weren't able to make it compatible for Firefox. It is due to a rendering bug which breaks SVG interactions (mouse over, click & drag) when deformed for perspective.
+
+## Thanks
+Hermione-Story.com works thanks to (only) 3 awesome light-weight libraries: [HeadJS](http://headjs.com), [MustacheJS](https://mustache.github.io) and [HammerJS](http://hammerjs.github.io).
+
+We owe a huge thanks to [Amit Patel](http://www.redblobgames.com) for his [hexagonal grid bible](http://www.redblobgames.com/grids/hexagons/).
