@@ -7,7 +7,9 @@ This website is free to view on PC & tablets, and is completely hosted here on G
 
 [www.hermione-story.com](http://www.hermione-story.com)
 
-*L’Hermione, the Voyage to Liberty website is a technical experiment, only available on tablets & PC through Chrome or Safari.*
+*Hermione-story.com is a technical experiment, only available on tablets & PC through Chrome or Safari.*
+
+*L’Hermione, the Voyage to Liberty* is part of a bigger project, please visit [www.hermionefrigate.com](http://www.hermionefrigate.com) for more information.
 
 ## Technical notes
 Hosted completely on Github, the database is extracted from a [Google Spreadsheet](https://docs.google.com/spreadsheets/d/1P4mghyYzydyaTzcW-iofQu1KSBstk5I-MZKr6hk_0eE/pubhtml).
