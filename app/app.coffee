@@ -95,15 +95,14 @@ do ->
   ###
   Sorry about this webkit-only thing…
   Firefox can't handle off-canvas transformed SVG elements with perspective and there is nothing I can do about it.
-  I really tried IE (10+), but seems that it just couldn't try me back.
-  Wait, what's Opera?
+  Firefox being out, I didn't bother trying neither IE nor Opera.
   ###
   return false if head.browser.name in ['ie', 'ff', 'opera']
 
   sources =
-    libs:     ['mustache', 'hammer'].map((a) -> 'assets/lib/'+a+'.min.js')
+    libs:     ['http://cdnjs.cloudflare.com/ajax/libs/mustache.js/2.1.2/mustache.min.js', 'http://cdnjs.cloudflare.com/ajax/libs/hammer.js/2.0.4/hammer.min.js']
     scripts:  ['helpers', 'grid', 'views'].map((a) -> 'app/'+a+'.js')
-    css:      ['app'].map((a) -> 'assets/css/'+a+'.css')
+    css:      ['app'].map((a) -> 'public/css/'+a+'.css')
   ressources = ( v.join(',') for k, v of sources ).join(',').split(',').reverse()
 
   window.progress = do ->
@@ -113,8 +112,7 @@ do ->
       current++
       wrap.dataset.value = current+'/'+steps
       bar.style.width = current/steps*100+'%'
-      label.innerHTML = 'initialisation…' if current is steps-1
-
+      label.innerHTML = 'génération du terrain…' if current is steps-1
 
   load = (files, callback) ->
     if files.length is 0 then do callback
@@ -123,11 +121,8 @@ do ->
       do progress
 
   img = new Image()
-  img.src = 'assets/images/background.jpg'
+  img.src = 'public/images/background.jpg'
   img.addEventListener 'load', ->
     do progress
     load ressources, ->
-      get = new XMLHttpRequest()
-      get.open('GET', 'http://data.hermione-story.com/data.json');
-      get.onload = -> init(JSON.parse(get.responseText)) if get.status is 200
-      get.send();
+      async 'GET', 'data.json', init

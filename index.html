@@ -9,7 +9,7 @@
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
     html { font-size: 62.5%; }
-    body, .warning { background: #FFF url('assets/images/background.jpg') no-repeat fixed right bottom; background-size: cover; }
+    body, .warning { background: #FFF url('public/images/background.jpg') no-repeat fixed right bottom; background-size: cover; }
     .preload, .warning { position: fixed; top: 0; left: 0; display: table; width: 100%; height: 100%; z-index: 1000; font: 1.4rem 'Helvetica Neue', Helvetica, Arial, sans-serif; line-height: 2rem; }
     .preload-wrap, .warning-wrap { display: table-cell; text-align: center; vertical-align: middle; }
     .preload-header { display: inline-block; width: 100%; margin-bottom: 4rem; }
@@ -35,6 +35,8 @@
   </style>
 </head>
 <body>
+
+  <!-- loading screen -->
   <main id="preload" class="preload">
     <section class="preload-wrap">
       <header class="preload-header">
@@ -43,23 +45,30 @@
       </header>
       <div class="preload-progress" data-value="0">
         <div class="preload-progress-bar" style="width:0%"></div>
-        <div class="preload-progress-label">chargement…</div>
+        <div class="preload-progress-label">chargement des ressources…</div>
         <div class="preload-progress-start" title="touche ENTRÉE du clavier">lever l'ancre</div>
       </div>
     </section>
   </main>
+
+  <!-- compatibility message -->
   <section id="warning" class="warning">
     <article class="warning-wrap">
       <p class="warning-text"><i>L'Hermione, le Voyage vers la Liberté</i> est une expérience web documentaire inédite sur la frégate de Lafayette.<br>Ce site est l'œuvre d'une expérimentation technologique, consultable uniquement sur <b>ordinateur ou tablette</b>, sur les versions récentes des navigateurs <b>Google Chrome et Safari</b> et en <b>format paysage</b>.
       <br><a href="https://www.google.com/chrome" target="_blank">Télécharger Google Chrome</a></p>
     </article>
   </section>
+
+  <!-- restart button -->
   <a id="restart" class="restart" href="">Recommencer l'aventure</a>
-  <script src="assets/lib/head.min.js"></script>
+
+  <!-- scripts -->
+  <script src="//cdnjs.cloudflare.com/ajax/libs/headjs/1.0.3/head.min.js"></script>
   <script src="app/app.js"></script>
   <script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
   ga('create', 'UA-43091425-4', 'auto'); ga('send', 'pageview');
   </script>
+
 </body>
 </html>

@@ -168,22 +168,19 @@ init = function(data) {
   /*
   Sorry about this webkit-only thing…
   Firefox can't handle off-canvas transformed SVG elements with perspective and there is nothing I can do about it.
-  I really tried IE (10+), but seems that it just couldn't try me back.
-  Wait, what's Opera?
+  Firefox being out, I didn't bother trying neither IE nor Opera.
    */
   var img, k, load, ressources, sources, v, _ref;
   if ((_ref = head.browser.name) === 'ie' || _ref === 'ff' || _ref === 'opera') {
     return false;
   }
   sources = {
-    libs: ['mustache', 'hammer'].map(function(a) {
-      return 'assets/lib/' + a + '.min.js';
-    }),
+    libs: ['http://cdnjs.cloudflare.com/ajax/libs/mustache.js/2.1.2/mustache.min.js', 'http://cdnjs.cloudflare.com/ajax/libs/hammer.js/2.0.4/hammer.min.js'],
     scripts: ['helpers', 'grid', 'views'].map(function(a) {
       return 'app/' + a + '.js';
     }),
     css: ['app'].map(function(a) {
-      return 'assets/css/' + a + '.css';
+      return 'public/css/' + a + '.css';
     })
   };
   ressources = ((function() {
@@ -206,7 +203,7 @@ init = function(data) {
       wrap.dataset.value = current + '/' + steps;
       bar.style.width = current / steps * 100 + '%';
       if (current === steps - 1) {
-        return label.innerHTML = 'initialisation…';
+        return label.innerHTML = 'génération du terrain…';
       }
     };
   })();
@@ -221,19 +218,11 @@ init = function(data) {
     }
   };
   img = new Image();
-  img.src = 'assets/images/background.jpg';
+  img.src = 'public/images/background.jpg';
   return img.addEventListener('load', function() {
     progress();
     return load(ressources, function() {
-      var get;
-      get = new XMLHttpRequest();
-      get.open('GET', 'http://data.hermione-story.com/data.json');
-      get.onload = function() {
-        if (get.status === 200) {
-          return init(JSON.parse(get.responseText));
-        }
-      };
-      return get.send();
+      return async('GET', 'data.json', init);
     });
   });
 })();

@@ -1,4 +1,4 @@
-var animate, element, extend, jsonp, preload, setAttributes, shuffle, timeout;
+var animate, async, element, extend, preload, setAttributes, shuffle, timeout;
 
 window.requestAnimFrame = (function() {
   return window.requestAnimationFrame || window.webkitRequestAnimationFrame || window.mozRequestAnimationFrame || function(callback) {
@@ -65,21 +65,33 @@ animate = function(callback, duration, easing) {
   })();
 };
 
-jsonp = (function() {
-  var unique;
-  unique = 0;
-  return function(url, callback) {
-    var name, script, _ref;
-    _ref = ['_jsonp_' + unique++, document.createElement('script')], name = _ref[0], script = _ref[1];
-    url += (url.match(/\?/) ? '&' : '?') + 'callback=' + name;
-    script.src = url;
-    window[name] = function(data) {
-      document.body.removeChild(script);
-      return callback(data);
+async = function(method, url, callback, params, headers) {
+  var k, v, xhr;
+  if (callback == null) {
+    callback = false;
+  }
+  if (params == null) {
+    params = {};
+  }
+  if (headers == null) {
+    headers = {};
+  }
+  xhr = new XMLHttpRequest();
+  xhr.open(method, url);
+  xhr.setRequestHeader('Content-Type', 'application/json; charset=UTF-8');
+  for (k in headers) {
+    v = headers[k];
+    xhr.setRequestHeader(k, v);
+  }
+  if (callback.call != null) {
+    xhr.onload = function() {
+      if (xhr.status === 200) {
+        return callback(JSON.parse(xhr.responseText));
+      }
     };
-    return document.body.appendChild(script);
-  };
-})();
+  }
+  return xhr.send(JSON.stringify(params));
+};
 
 preload = function(src, callback) {
   var img;

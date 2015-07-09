@@ -19,14 +19,13 @@ animate = ( callback, duration = 300, easing = (t) -> t ) ->
     if t <= 1 then requestAnimFrame animation else t = 1
     callback t
 
-jsonp = do ->
-  unique = 0
-  (url, callback) ->
-    [name, script] = ['_jsonp_'+unique++, document.createElement 'script']
-    url += ( if url.match /\?/ then '&' else '?' )+'callback='+name
-    script.src = url
-    window[name] = (data) -> document.body.removeChild(script); callback data
-    document.body.appendChild script
+async = (method, url, callback = false, params = {}, headers = {}) ->
+  xhr = new XMLHttpRequest()
+  xhr.open method, url
+  xhr.setRequestHeader 'Content-Type', 'application/json; charset=UTF-8'
+  xhr.setRequestHeader k, v for k, v of headers
+  if callback.call? then xhr.onload = -> callback(JSON.parse(xhr.responseText)) if xhr.status is 200
+  xhr.send JSON.stringify(params)
 
 preload = (src, callback = false) ->
   img = new Image()
