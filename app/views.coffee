@@ -223,7 +223,8 @@ Menu = (target, token, data = [], callback = false) ->
                 </a>
                 <p class="credits-copyright">
                   © 2015 <a href="http://www.flottillenumerique.com" target="_blank">La Flottille Numérique</a> —
-                  <a href="mailto:contact@hermione-story.com">contact@hermione-story.com</a>
+                  <a href="mailto:contact@hermione-story.com">contact@hermione-story.com</a> —
+                  <a href="https://github.com/NyxSquad/hermione-story">Github</a>
                 </p>
               </footer>
             </section>
